@@ -1738,7 +1738,7 @@
           <div class="contact-icon">📲</div>
           <div>
             <div class="contact-label">WhatsApp</div>
-            <div class="contact-value"><a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+I+would+like+to+get+more+information+about+your+programs." target="_blank" style="color:var(--gold);text-decoration:none">+968 9000 0000</a></div>
+            <div class="contact-value"><a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+I+would+like+to+get+more+information+about+your+programs." target="_blank" style="color:var(--gold);text-decoration:none">+968 9365 0675</a></div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -1843,6 +1843,56 @@
     event.target.classList.add('active');
   }
 
+  // ── SMART WHATSAPP OPENER
+  // On mobile: wa.me opens the app directly
+  // On desktop: try whatsapp:// protocol first (opens desktop app), fallback to web.whatsapp.com
+  function openWhatsApp(text) {
+    const number = '96893650675';
+    const encoded = encodeURIComponent(text);
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = `https://wa.me/${number}?text=${encoded}`;
+    } else {
+      // Try desktop app first via whatsapp:// protocol
+      const desktopUrl = `whatsapp://send?phone=${number}&text=${encoded}`;
+      const webUrl = `https://web.whatsapp.com/send?phone=${number}&text=${encoded}`;
+
+      // Attempt to open desktop app; if it fails after 1.5s, open WhatsApp Web
+      const start = Date.now();
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      const fallbackTimer = setTimeout(function() {
+        document.body.removeChild(iframe);
+        // Only fallback if the page is still visible (app didn't open)
+        if (Date.now() - start < 2000) {
+          window.open(webUrl, '_blank');
+        }
+      }, 1500);
+
+      iframe.src = desktopUrl;
+
+      // If user returns to tab quickly, app opened — cancel fallback
+      window.addEventListener('blur', function onBlur() {
+        clearTimeout(fallbackTimer);
+        try { document.body.removeChild(iframe); } catch(e) {}
+        window.removeEventListener('blur', onBlur);
+      }, { once: true });
+    }
+  }
+
+  // ── INTERCEPT ALL WA LINKS and route through smart opener
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    e.preventDefault();
+    const url = new URL(link.href);
+    const text = url.searchParams.get('text') || '';
+    openWhatsApp(text);
+  });
+
   // ── CONTACT FORM → WhatsApp
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -1859,7 +1909,7 @@
       'corporate': 'School / Corporate Program',
       'competition': 'Competition Coaching'
     }[interest] || interest;
-    const msgLines = [
+    const text = [
       'Hi OMMA! 🥋',
       '',
       '*ENQUIRY: ' + pkg + '*',
@@ -1867,9 +1917,8 @@
       'Name: ' + name,
       phone ? 'Phone: ' + phone : '',
       message ? 'Message: ' + message : ''
-    ].filter(Boolean).join('%0A');
-    const text = msgLines;
-    window.open(`https://wa.me/96893650675?text=${text}`, '_blank');
+    ].filter(Boolean).join('\n');
+    openWhatsApp(text);
   });
 </script>
 </body>
