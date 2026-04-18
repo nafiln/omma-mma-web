@@ -73,14 +73,22 @@
     }
 
     .nav-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2rem;
-      color: var(--gold);
-      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
       text-decoration: none;
+      height: 100%;
     }
 
-    .nav-logo span { color: var(--white); }
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      transition: height 0.3s;
+    }
+
+    nav.scrolled .nav-logo img {
+      height: 38px;
+    }
 
     .nav-links {
       display: flex;
@@ -1099,11 +1107,10 @@
       gap: 1rem;
     }
 
-    .footer-brand {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.5rem;
-      color: var(--gold);
-      letter-spacing: 0.1em;
+    .footer-brand img {
+      height: 36px;
+      width: auto;
+      object-fit: contain;
     }
 
     .footer-copy {
@@ -1180,6 +1187,7 @@
       .hero-stats { gap: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
       .coach-credentials { grid-template-columns: 1fr; }
+      .nav-logo img { height: 36px; }
     }
   </style>
 
@@ -1199,7 +1207,9 @@
 
 <!-- ── NAV ── -->
 <nav id="nav" aria-label="Main navigation">
-  <a href="#" class="nav-logo">OM<span>MA</span></a>
+  <a href="#" class="nav-logo">
+    <img src="__omma_gym_logo.jpeg" alt="OMMA – Oman Mixed Martial Art" />
+  </a>
   <ul class="nav-links">
     <li><a href="#programs">Programs</a></li>
     <li><a href="#packages">Membership</a></li>
@@ -1797,7 +1807,9 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-brand">OMMA</div>
+  <div class="footer-brand">
+    <img src="__omma_gym_logo.jpeg" alt="OMMA – Oman Mixed Martial Art" />
+  </div>
   <div class="footer-copy">
     © 2024 Oman Mixed Martial Art · All Rights Reserved<br>
     <span style="color:rgba(138,158,163,0.6)">Own Your Body. Own Your Mind. Own Your Life.</span>
@@ -1844,8 +1856,6 @@
   }
 
   // ── SMART WHATSAPP OPENER
-  // On mobile: wa.me opens the app directly
-  // On desktop: try whatsapp:// protocol first (opens desktop app), fallback to web.whatsapp.com
   function openWhatsApp(text) {
     const number = '96893650675';
     const encoded = encodeURIComponent(text);
@@ -1854,11 +1864,9 @@
     if (isMobile) {
       window.location.href = `https://wa.me/${number}?text=${encoded}`;
     } else {
-      // Try desktop app first via whatsapp:// protocol
       const desktopUrl = `whatsapp://send?phone=${number}&text=${encoded}`;
       const webUrl = `https://web.whatsapp.com/send?phone=${number}&text=${encoded}`;
 
-      // Attempt to open desktop app; if it fails after 1.5s, open WhatsApp Web
       const start = Date.now();
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
@@ -1866,7 +1874,6 @@
 
       const fallbackTimer = setTimeout(function() {
         document.body.removeChild(iframe);
-        // Only fallback if the page is still visible (app didn't open)
         if (Date.now() - start < 2000) {
           window.open(webUrl, '_blank');
         }
@@ -1874,7 +1881,6 @@
 
       iframe.src = desktopUrl;
 
-      // If user returns to tab quickly, app opened — cancel fallback
       window.addEventListener('blur', function onBlur() {
         clearTimeout(fallbackTimer);
         try { document.body.removeChild(iframe); } catch(e) {}
@@ -1883,7 +1889,7 @@
     }
   }
 
-  // ── INTERCEPT ALL WA LINKS and route through smart opener
+  // ── INTERCEPT ALL WA LINKS
   document.addEventListener('click', function(e) {
     const link = e.target.closest('a[href*="wa.me"]');
     if (!link) return;
