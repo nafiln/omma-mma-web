@@ -1,0 +1,1925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OMMA – Oman Mixed Martial Art | BJJ & MMA Muscat</title>
+  <meta name="description" content="OMMA is Oman's premier BJJ and MMA academy. Train under IBJJF European & World Pro Champion Coach Mohammed Doty. Youth, adult & corporate programs in Muscat." />
+  <meta property="og:title" content="OMMA – Oman Mixed Martial Art" />
+  <meta property="og:description" content="Own Your Body. Own Your Mind. Own Your Life. World-class BJJ & MMA training in Muscat, Oman." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --charcoal: #1e2a2d;
+      --charcoal-mid: #2b3d41;
+      --charcoal-light: #334043;
+      --gold: #CB9744;
+      --gold-light: #e0b060;
+      --gold-dark: #a87830;
+      --white: #f5f2ee;
+      --off-white: #ece8e1;
+      --text-muted: #8a9ea3;
+      --black: #0d1618;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--charcoal);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5%;
+      height: 72px;
+      background: rgba(14, 22, 25, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(203, 151, 68, 0.15);
+      transition: all 0.3s;
+    }
+
+    nav.scrolled {
+      height: 60px;
+      background: rgba(14, 22, 25, 0.98);
+    }
+
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--black) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 2px;
+      font-weight: 700 !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light); color: var(--black) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--black);
+      border-bottom: 2px solid var(--gold);
+      padding: 2rem 5%;
+      z-index: 999;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(203,151,68,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(30,42,45,0.9) 0%, transparent 70%),
+        linear-gradient(135deg, #0a1214 0%, #1a2528 50%, #0d1618 100%);
+    }
+
+    /* Geometric accent lines */
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-lines::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 55%;
+      height: 120%;
+      border-left: 1px solid rgba(203,151,68,0.12);
+      border-right: 1px solid rgba(203,151,68,0.06);
+      transform: skewX(-8deg);
+    }
+
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      bottom: 15%;
+      right: 8%;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(203,151,68,0.08);
+      transform: rotate(45deg);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 0 5%;
+      padding-top: 72px;
+      max-width: 900px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-weight: 700;
+      line-height: 0.92;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.35s forwards;
+    }
+
+    .hero h1 .gold { color: var(--gold); }
+    .hero h1 .outline {
+      -webkit-text-stroke: 2px var(--white);
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.5s forwards;
+    }
+
+    .hero-sub strong { color: var(--white); font-weight: 600; }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.65s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold);
+      color: var(--black);
+      padding: 1rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(203,151,68,0.35);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1.5px solid rgba(203,151,68,0.5);
+      color: var(--white);
+      padding: 1rem 2rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.9s ease 0.8s forwards;
+    }
+
+    .hero-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .hero-stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-stat-sep {
+      width: 1px;
+      background: rgba(255,255,255,0.1);
+      align-self: stretch;
+    }
+
+    /* ── SECTION BASICS ── */
+    section { position: relative; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5%;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.0;
+      letter-spacing: 0.02em;
+    }
+
+    .gold-text { color: var(--gold); }
+
+    .gold-line {
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.2rem 0 2rem;
+    }
+
+    /* ── PROGRAMS ── */
+    .programs-section {
+      padding: 7rem 0;
+      background: var(--charcoal);
+    }
+
+    .programs-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .programs-header .gold-line { margin: 1.2rem auto 2rem; }
+
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(203,151,68,0.1);
+      border: 1.5px solid rgba(203,151,68,0.1);
+    }
+
+    .program-card {
+      background: var(--charcoal-mid);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s;
+      cursor: default;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .program-card:hover { background: var(--charcoal-light); }
+    .program-card:hover::before { transform: scaleX(1); }
+
+    .program-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .program-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .program-desc {
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: var(--text-muted);
+    }
+
+    .program-tag {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(203,151,68,0.3);
+      padding: 0.25rem 0.7rem;
+      border-radius: 1px;
+    }
+
+    /* ── PACKAGES ── */
+    .packages-section {
+      padding: 7rem 0;
+      background: var(--black);
+      overflow: hidden;
+    }
+
+    .packages-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .packages-header .gold-line { margin: 1.2rem auto 1.5rem; }
+
+    .packages-header p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .packages-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .pkg-tab {
+      padding: 0.6rem 1.4rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: none;
+      border: 1px solid rgba(203,151,68,0.25);
+      color: var(--text-muted);
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .pkg-tab.active, .pkg-tab:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--black);
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .package-card {
+      background: var(--charcoal-mid);
+      border: 1px solid rgba(203,151,68,0.12);
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .package-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .package-card.featured {
+      border-color: var(--gold);
+      transform: scale(1.03);
+    }
+
+    .package-card.featured:hover {
+      transform: scale(1.03) translateY(-6px);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 1px;
+    }
+
+    .package-header {
+      padding: 2rem 2rem 1.5rem;
+      border-bottom: 1px solid rgba(203,151,68,0.12);
+    }
+
+    .package-tier {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .package-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      margin-top: 1rem;
+    }
+
+    .price-currency {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+    }
+
+    .price-amount {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3.5rem;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .price-period {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .package-body {
+      padding: 1.5rem 2rem 2rem;
+    }
+
+    .package-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .package-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .package-features li::before {
+      content: '✦';
+      color: var(--gold);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .package-features li.disabled {
+      opacity: 0.35;
+    }
+
+    .package-features li.disabled::before {
+      content: '–';
+      color: var(--text-muted);
+    }
+
+    .package-cta {
+      display: block;
+      text-align: center;
+      padding: 0.9rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .package-cta.outline {
+      border: 1.5px solid rgba(203,151,68,0.4);
+      color: var(--gold);
+    }
+
+    .package-cta.outline:hover {
+      border-color: var(--gold);
+      background: rgba(203,151,68,0.08);
+    }
+
+    .package-cta.solid {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .package-cta.solid:hover {
+      background: var(--gold-light);
+      box-shadow: 0 4px 20px rgba(203,151,68,0.4);
+    }
+
+    .pkg-panel { display: none; }
+    .pkg-panel.active { display: block; }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy-section {
+      padding: 7rem 0;
+      background: var(--charcoal-mid);
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5px;
+      background: rgba(203,151,68,0.08);
+      margin-top: 3rem;
+    }
+
+    .philosophy-card {
+      background: var(--charcoal-mid);
+      padding: 3rem 2.5rem;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .philosophy-card:hover { background: var(--charcoal-light); }
+
+    .phi-letter {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(203,151,68,0.1);
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .philosophy-card:hover .phi-letter { color: rgba(203,151,68,0.2); }
+
+    .phi-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .phi-word {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .phi-desc {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* ── COACH ── */
+    .coach-section {
+      padding: 7rem 0;
+      background: var(--charcoal);
+    }
+
+    .coach-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .coach-visual {
+      position: relative;
+    }
+
+    .coach-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--charcoal-mid) 0%, var(--charcoal-light) 100%);
+      border: 1px solid rgba(203,151,68,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coach-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(14,22,25,0.6) 0%, transparent 60%);
+    }
+
+    .coach-placeholder-icon {
+      font-size: 5rem;
+      opacity: 0.15;
+    }
+
+    .coach-gold-bar {
+      position: absolute;
+      bottom: -1px;
+      left: -1px;
+      right: -1px;
+      height: 4px;
+      background: var(--gold);
+    }
+
+    .coach-credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .credential-chip {
+      background: var(--black);
+      border: 1px solid rgba(203,151,68,0.2);
+      border-radius: 2px;
+      padding: 0.75rem 1rem;
+    }
+
+    .credential-chip-label {
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .credential-chip-val {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    .coach-bio {
+      font-size: 0.88rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .coach-bio p + p { margin-top: 1rem; }
+    .coach-bio strong { color: var(--white); font-weight: 600; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section {
+      padding: 7rem 0;
+      background: var(--black);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: var(--charcoal-mid);
+      border: 1px solid rgba(203,151,68,0.1);
+      border-radius: 2px;
+      padding: 2rem;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      color: rgba(203,151,68,0.12);
+      position: absolute;
+      top: 0.5rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 0.85rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .testimonial-avatar {
+      width: 38px;
+      height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .testimonial-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .testimonial-role {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .star-row {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .star { color: var(--gold); font-size: 0.7rem; }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 5rem 0;
+      background: var(--gold);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-strip::before {
+      content: 'OMMA';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18vw;
+      color: rgba(0,0,0,0.06);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .cta-strip-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .cta-strip p {
+      font-size: 1rem;
+      color: rgba(0,0,0,0.65);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .cta-strip .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--black);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      font-family: 'Oswald', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      position: relative;
+      transition: all 0.25s;
+    }
+
+    .cta-strip .btn-dark:hover {
+      background: var(--charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+
+    /* ── CONTACT / FOOTER ── */
+    .contact-section {
+      padding: 7rem 0 4rem;
+      background: var(--charcoal-mid);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(203,151,68,0.1);
+      border: 1px solid rgba(203,151,68,0.2);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-value {
+      font-size: 0.88rem;
+      color: var(--white);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 2px;
+      color: var(--white);
+      padding: 0.75rem 1rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-group select option { background: var(--charcoal); }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    footer {
+      background: var(--black);
+      border-top: 1px solid rgba(203,151,68,0.1);
+      padding: 2rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(203,151,68,0.25);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .footer-social a:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── DIVIDERS ── */
+    .gold-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.25;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .package-card.featured { transform: none; }
+      .package-card.featured:hover { transform: translateY(-6px); }
+      .coach-inner { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .programs-grid { grid-template-columns: 1fr; }
+      .hero-ctas { flex-direction: column; }
+      .hero-stats { gap: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .coach-credentials { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "OMMA – Oman Mixed Martial Art",
+    "description": "Premier BJJ and MMA training academy in Muscat, Oman. World-class coaches, values-based development.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Muscat", "addressCountry": "OM" },
+    "sport": ["Brazilian Jiu-Jitsu", "Mixed Martial Arts", "Self-Defense"]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="nav" aria-label="Main navigation">
+  <a href="#" class="nav-logo">OM<span>MA</span></a>
+  <ul class="nav-links">
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#packages">Membership</a></li>
+    <li><a href="#coach">Coach Doty</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+Booking+a+FREE+Trial+Class.+Please+send+me+available+times.+Thank+you!" target="_blank" class="nav-cta">Free Trial</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#programs" onclick="closeMobile()">Programs</a>
+  <a href="#packages" onclick="closeMobile()">Membership</a>
+  <a href="#coach" onclick="closeMobile()">Coach Doty</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+Booking+a+FREE+Trial+Class.+Please+send+me+available+times.+Thank+you!" target="_blank" style="color:var(--gold)">Book Free Trial →</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home" aria-label="Hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Muscat, Oman · Est. 2024</div>
+    <h1>
+      Own Your<br>
+      <span class="gold">Ground.</span><br>
+      <span class="outline">Own Your Life.</span>
+    </h1>
+    <p class="hero-sub">
+      Oman's premier BJJ & MMA academy. Led by <strong>World & European Champion</strong> Coach Mohammed Doty — where every session forges not just athletes, but leaders.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+Claiming+FREE+Trial+Class.+Please+send+session+details+and+what+to+bring.+Thank+you!" target="_blank" class="btn-primary">
+        ✦ Claim Your Free Trial
+      </a>
+      <a href="#programs" class="btn-outline">Explore Programs</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">2×</div>
+        <div class="hero-stat-label">World Champion</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">5+</div>
+        <div class="hero-stat-label">Military Units Trained</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">BJJ</div>
+        <div class="hero-stat-label">2nd Degree Black Belt</div>
+      </div>
+      <div class="hero-stat-sep"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">All</div>
+        <div class="hero-stat-label">Ages & Levels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ── PROGRAMS ── -->
+<section class="programs-section" id="programs">
+  <div class="section-inner">
+    <div class="programs-header reveal">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Train in <span class="gold-text">Your Discipline</span></h2>
+      <span class="gold-line"></span>
+      <p style="color:var(--text-muted);font-size:0.9rem;max-width:500px;margin:0 auto;">From beginner to elite competitor — OMMA has a program built around your goals, your level, and your life.</p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card reveal">
+        <span class="program-icon">🥋</span>
+        <div class="program-name">Brazilian Jiu-Jitsu</div>
+        <p class="program-desc">Gi & No-Gi classes across all levels. The foundation of OMMA — technical depth, competitive drilling, and mat intelligence. From your first roll to your competition debut.</p>
+        <span class="program-tag">All Levels · Gi & No-Gi</span>
+      </div>
+      <div class="program-card reveal">
+        <span class="program-icon">🥊</span>
+        <div class="program-name">Mixed Martial Arts</div>
+        <p class="program-desc">Striking, grappling, and conditioning unified. Build a complete combat game under coaches who've trained fighters to championship gold across the Gulf region.</p>
+        <span class="program-tag">Adults · Intermediate+</span>
+      </div>
+      <div class="program-card reveal">
+        <span class="program-icon">🛡️</span>
+        <div class="program-name">Self-Defense</div>
+        <p class="program-desc">Practical, intelligent, non-aggressive threat control. Rooted in real-world scenarios developed through special forces methodology. Control without conflict.</p>
+        <span class="program-tag">All Ages · Beginners Welcome</span>
+      </div>
+      <div class="program-card reveal">
+        <span class="program-icon">🌟</span>
+        <div class="program-name">Youth Program</div>
+        <p class="program-desc">We don't just teach kids to roll. We teach them to stand up — on the mat and in life. Focus, respect, resilience, and confidence through the discipline of BJJ.</p>
+        <span class="program-tag">Ages 5–16 · Character First</span>
+      </div>
+      <div class="program-card reveal">
+        <span class="program-icon">🏆</span>
+        <div class="program-name">Competition Coaching</div>
+        <p class="program-desc">Elite preparation for regional and international tournaments. Sport-specific conditioning, game-planning, and mental performance coaching from a champion's blueprint.</p>
+        <span class="program-tag">Advanced · Competitive Athletes</span>
+      </div>
+      <div class="program-card reveal">
+        <span class="program-icon">🏢</span>
+        <div class="program-name">School & Corporate</div>
+        <p class="program-desc">Values-Based Development programs for organizations committed to leadership, discipline, and team cohesion. Our primary classroom is the mind and the heart.</p>
+        <span class="program-tag">Groups · Custom Programs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ── PACKAGES ── -->
+<section class="packages-section" id="packages">
+  <div class="section-inner">
+    <div class="packages-header reveal">
+      <div class="section-label">Membership</div>
+      <h2 class="section-title">Choose Your <span class="gold-text">Path</span></h2>
+      <span class="gold-line"></span>
+      <p>Every journey starts with a single step. Find the membership that fits your commitment level — and grow from there.</p>
+    </div>
+
+    <div class="packages-tabs">
+      <button class="pkg-tab active" onclick="showPkg('adult')">Adult</button>
+      <button class="pkg-tab" onclick="showPkg('youth')">Youth</button>
+      <button class="pkg-tab" onclick="showPkg('corporate')">Corporate</button>
+    </div>
+
+    <!-- ADULT PACKAGES -->
+    <div class="pkg-panel active" id="pkg-adult">
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Starter</div>
+            <div class="package-name">Foundation</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">35</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>2 classes per week (any discipline)</li>
+              <li>Access to beginner & fundamentals sessions</li>
+              <li>Locker room access</li>
+              <li>OMMA community membership</li>
+              <li class="disabled">Open mat access</li>
+              <li class="disabled">Competition training track</li>
+              <li class="disabled">Priority booking</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*FOUNDATION+MEMBERSHIP*+%E2%80%93+Adult+Starter+%7C+OMR+35%2Fmonth%0A%0AIncludes%3A+2+classes+per+week%2C+beginner+%26+fundamentals+sessions%2C+locker+access%2C+OMMA+community+membership.%0A%0APlease+confirm+availability+and+next+steps.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+          </div>
+        </div>
+
+        <div class="package-card featured reveal">
+          <div class="package-badge">Most Popular</div>
+          <div class="package-header">
+            <div class="package-tier">Recommended</div>
+            <div class="package-name">Champion</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">60</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Unlimited classes — all disciplines</li>
+              <li>Open mat access (Fri & Sat)</li>
+              <li>BJJ & MMA combined access</li>
+              <li>Locker room + gear storage</li>
+              <li>OMMA community membership</li>
+              <li>Priority class booking</li>
+              <li class="disabled">Competition coaching track</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*CHAMPION+MEMBERSHIP*+%E2%80%93+Adult+%7C+OMR+60%2Fmonth%0A%0AIncludes%3A+Unlimited+classes+all+disciplines%2C+open+mat+access%2C+BJJ+%26+MMA%2C+priority+booking.%0A%0APlease+let+me+know+how+to+get+started!+Thank+you!" target="_blank" class="package-cta solid">Claim This Plan</a>
+          </div>
+        </div>
+
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Elite</div>
+            <div class="package-name">Competitor</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">90</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Everything in Champion</li>
+              <li>Competition training track included</li>
+              <li>1-on-1 game-planning sessions (monthly)</li>
+              <li>Tournament entry support & logistics</li>
+              <li>Performance & mental coaching</li>
+              <li>Early access to seminars & workshops</li>
+              <li>OMMA branded gi (first month)</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*COMPETITOR+MEMBERSHIP*+%E2%80%93+Adult+Elite+%7C+OMR+90%2Fmonth%0A%0AIncludes%3A+Unlimited+classes%2C+competition+training+track%2C+1-on-1+game-planning%2C+tournament+support%2C+mental+coaching+%26+OMMA+gi.%0A%0ALooking+to+compete+%E2%80%93+please+share+more+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTH PACKAGES -->
+    <div class="pkg-panel" id="pkg-youth">
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Youth · Starter</div>
+            <div class="package-name">Little Warriors</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">25</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>2 classes per week (BJJ fundamentals)</li>
+              <li>Character & values-based curriculum</li>
+              <li>Ages 5–10</li>
+              <li>Safe, structured environment</li>
+              <li class="disabled">Open mat</li>
+              <li class="disabled">Competition track</li>
+              <li class="disabled">Belt progression fast-track</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*LITTLE+WARRIORS+YOUTH+PROGRAM*+%E2%80%93+Ages+5-10+%7C+OMR+25%2Fmonth%0A%0AIncludes%3A+2+classes+per+week%2C+BJJ+fundamentals%2C+character+%26+values+curriculum+in+a+safe+structured+environment.%0A%0APlease+share+the+class+schedule+and+enrollment+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+          </div>
+        </div>
+
+        <div class="package-card featured reveal">
+          <div class="package-badge">Most Popular</div>
+          <div class="package-header">
+            <div class="package-tier">Youth · Core</div>
+            <div class="package-name">Junior Athlete</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">40</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Unlimited youth classes</li>
+              <li>Ages 8–16 · Gi & No-Gi</li>
+              <li>Values curriculum + physical conditioning</li>
+              <li>Belt progression assessment</li>
+              <li>Open mat (weekend)</li>
+              <li>Progress reports for parents</li>
+              <li class="disabled">Competition coaching</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*JUNIOR+ATHLETE+YOUTH+PROGRAM*+%E2%80%93+Ages+8-16+%7C+OMR+40%2Fmonth%0A%0AIncludes%3A+Unlimited+youth+classes%2C+Gi+%26+No-Gi%2C+belt+progression%2C+open+mat+%26+parent+progress+reports.%0A%0APlease+send+enrollment+steps.+Thank+you!" target="_blank" class="package-cta solid">Enrol Now</a>
+          </div>
+        </div>
+
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Youth · Elite</div>
+            <div class="package-name">Young Champion</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">65</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Everything in Junior Athlete</li>
+              <li>Competition coaching track</li>
+              <li>Tournament preparation & entry support</li>
+              <li>1-on-1 development review (monthly)</li>
+              <li>Priority belt grading</li>
+              <li>Leadership & mentorship sessions</li>
+              <li>OMMA youth kit included</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*YOUNG+CHAMPION+YOUTH+PROGRAM*+%E2%80%93+Elite+%7C+OMR+65%2Fmonth%0A%0AIncludes%3A+Competition+coaching%2C+tournament+prep%2C+monthly+development+review%2C+priority+belt+grading%2C+leadership+sessions+%26+OMMA+youth+kit.%0A%0AMy+child+is+interested+in+competing+%E2%80%93+please+share+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORPORATE PACKAGES -->
+    <div class="pkg-panel" id="pkg-corporate">
+      <div class="packages-grid">
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Organisation · Entry</div>
+            <div class="package-name">Team Builder</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">200</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Up to 8 participants</li>
+              <li>2 group sessions per week</li>
+              <li>Self-defense & values-based curriculum</li>
+              <li>OMMA branded experience</li>
+              <li class="disabled">On-site delivery</li>
+              <li class="disabled">Custom curriculum</li>
+              <li class="disabled">Leadership coaching module</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*TEAM+BUILDER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+8+participants+%7C+OMR+200%2Fmonth%0A%0AIncludes%3A+2+group+sessions+per+week%2C+self-defense+%26+values-based+curriculum+at+OMMA+facility.%0A%0APlease+send+a+proposal+for+our+organisation.+Thank+you!" target="_blank" class="package-cta outline">Request Proposal</a>
+          </div>
+        </div>
+
+        <div class="package-card featured reveal">
+          <div class="package-badge">Recommended</div>
+          <div class="package-header">
+            <div class="package-tier">Organisation · Core</div>
+            <div class="package-name">Performance Partner</div>
+            <div class="package-price">
+              <span class="price-currency">OMR</span>
+              <span class="price-amount">450</span>
+              <span class="price-period">/ month</span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Up to 20 participants</li>
+              <li>3 group sessions per week</li>
+              <li>Self-defense + leadership curriculum</li>
+              <li>Optional on-site delivery</li>
+              <li>Quarterly progress reporting</li>
+              <li>Custom session theming</li>
+              <li class="disabled">Dedicated account manager</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*PERFORMANCE+PARTNER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+20+participants+%7C+OMR+450%2Fmonth%0A%0AIncludes%3A+3+sessions+per+week%2C+self-defense+%26+leadership+curriculum%2C+optional+on-site+delivery%2C+quarterly+reporting+%26+custom+theming.%0A%0APlease+send+a+full+proposal.+Thank+you!" target="_blank" class="package-cta solid">Request Proposal</a>
+          </div>
+        </div>
+
+        <div class="package-card reveal">
+          <div class="package-header">
+            <div class="package-tier">Organisation · Elite</div>
+            <div class="package-name">OMMA Partnership</div>
+            <div class="package-price">
+              <span class="price-currency"></span>
+              <span class="price-amount" style="font-size:2.5rem">Custom</span>
+              <span class="price-period"></span>
+            </div>
+          </div>
+          <div class="package-body">
+            <ul class="package-features">
+              <li>Unlimited participants</li>
+              <li>Fully custom curriculum & delivery</li>
+              <li>On-site or OMMA facility</li>
+              <li>Dedicated OMMA liaison</li>
+              <li>Co-branded school/corporate programs</li>
+              <li>Annual performance partnership</li>
+              <li>Full values-development integration</li>
+            </ul>
+            <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*OMMA+CUSTOM+PARTNERSHIP+PROGRAM*%0A%0ALooking+for+a+fully+custom+martial+arts+%26+values-development+program+for+our+school+or+organisation%2C+with+dedicated+liaison+and+co-branded+delivery.%0A%0ACould+we+schedule+a+call+to+discuss%3F+Thank+you!" target="_blank" class="package-cta outline">Let's Talk</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="reveal" style="text-align:center;margin-top:2rem;font-size:0.78rem;color:var(--text-muted);">
+      All memberships include a <strong style="color:var(--white)">free trial class</strong> before commitment. Prices are indicative — contact us for the latest rates.
+    </p>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ── PHILOSOPHY ── -->
+<section class="philosophy-section" id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Our Philosophy</div>
+      <h2 class="section-title">The <span class="gold-text">OMMA</span> Code</h2>
+      <span class="gold-line"></span>
+      <p style="color:var(--text-muted);font-size:0.9rem;max-width:560px;margin-bottom:3rem;">At OMMA, we believe the most powerful battle you will ever fight is the one within yourself. Our name is our philosophy.</p>
+    </div>
+    <div class="philosophy-grid">
+      <div class="philosophy-card reveal">
+        <div class="phi-letter">O</div>
+        <div class="phi-title">O — First Principle</div>
+        <div class="phi-word">Ownership</div>
+        <p class="phi-desc">True strength begins with ownership — of your body, your choices, your emotions, and your purpose. We train you to take full possession of your performance, your mindset, and your life.</p>
+      </div>
+      <div class="philosophy-card reveal">
+        <div class="phi-letter">M</div>
+        <div class="phi-title">M — Second Principle</div>
+        <div class="phi-word">Mindset</div>
+        <p class="phi-desc">We adopt a disciplined, values-driven approach to mental conditioning. Drawing on principles of patience, resilience, self-mastery, and integrity, OMMA's mindset framework transforms how you handle adversity.</p>
+      </div>
+      <div class="philosophy-card reveal">
+        <div class="phi-letter">M</div>
+        <div class="phi-title">M — Third Principle</div>
+        <div class="phi-word">Martial</div>
+        <p class="phi-desc">We embrace martial excellence in its truest sense — intelligent, non-aggressive control. The ability to neutralize threats with calm precision, affirm your strength without ego, and protect without harm.</p>
+      </div>
+      <div class="philosophy-card reveal">
+        <div class="phi-letter">A</div>
+        <div class="phi-title">A — Fourth Principle</div>
+        <div class="phi-word">Art</div>
+        <p class="phi-desc">Martial arts is a craft refined over centuries. At OMMA, we honor the traditions of Brazilian Jiu-Jitsu and MMA while evolving the practice into something deeply personal — a language you speak through movement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ── COACH ── -->
+<section class="coach-section" id="coach">
+  <div class="section-inner">
+    <div class="coach-inner">
+      <div class="coach-visual reveal">
+        <div class="coach-placeholder">
+          <img src="coach.webp" alt="Coach Mohammed Doty" style="width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;display:block;border:1px solid rgba(203,151,68,0.2);" />
+          <div class="coach-gold-bar"></div>
+        </div>
+        <div class="coach-credentials">
+          <div class="credential-chip">
+            <div class="credential-chip-label">Belt Rank</div>
+            <div class="credential-chip-val">2nd Degree Black Belt, BJJ</div>
+          </div>
+          <div class="credential-chip">
+            <div class="credential-chip-label">Titles</div>
+            <div class="credential-chip-val">IBJJF European & World Pro Champion</div>
+          </div>
+          <div class="credential-chip">
+            <div class="credential-chip-label">Military</div>
+            <div class="credential-chip-val">Head Instructor, 5+ Elite Units</div>
+          </div>
+          <div class="credential-chip">
+            <div class="credential-chip-label">Legacy</div>
+            <div class="credential-chip-val">Founder, Qatar MMA</div>
+          </div>
+        </div>
+      </div>
+      <div class="coach-info reveal">
+        <div class="section-label">Head Coach & Co-Founder</div>
+        <h2 class="section-title">Coach<br><span class="gold-text">Mohammed Doty</span></h2>
+        <span class="gold-line"></span>
+        <div class="coach-bio">
+          <p>Some coaches teach technique. <strong>Coach Mohammed Doty teaches transformation.</strong></p>
+          <p>A 2nd Degree Black Belt under the legendary Master Fabricio Moreira, Coach Doty has competed and won at the highest levels of sport — including the prestigious <strong>IBJJF European Championship</strong> and the <strong>World Pro Championship</strong>.</p>
+          <p>His military background adds a dimension few coaches can match. As Head Instructor to over <strong>five elite military units including special forces</strong>, Coach Doty built training methodologies for real-world scenarios — where composure, precision, and controlled aggression are essential. That same philosophy underpins every OMMA program.</p>
+          <p>As founder of <strong>Qatar MMA</strong> — the nation's largest BJJ & MMA institution — he left a lasting mark on combat sports culture across the Gulf. Now he's building the same legacy here in Oman.</p>
+        </div>
+        <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0ATrain+with+*Coach+Mohammed+Doty*%0A%0AInterested+in+booking+a+session+and+learning+more+about+available+programs.+Please+share+the+schedule+and+next+steps.+Thank+you!" target="_blank" class="btn-primary">Train With Coach Doty →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials-section" id="testimonials">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;margin-bottom:1rem">
+      <div class="section-label" style="justify-content:center">What Members Say</div>
+      <h2 class="section-title">The <span class="gold-text">OMMA Effect</span></h2>
+      <span class="gold-line" style="margin:1.2rem auto 0"></span>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="star-row">★★★★★</div>
+        <p class="testimonial-text">The most complete BJJ experience I've had in Oman. Coach Doty doesn't just correct your technique — he reframes how you think about pressure, timing, and control. Off the mat too.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">AK</div>
+          <div>
+            <div class="testimonial-name">Ahmed K.</div>
+            <div class="testimonial-role">Adult Member · BJJ Intermediate</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="star-row">★★★★★</div>
+        <p class="testimonial-text">My son joined OMMA's youth program six months ago. His focus at school, his discipline at home — everything improved. The values curriculum is real. This isn't just a gym.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">FM</div>
+          <div>
+            <div class="testimonial-name">Fatima M.</div>
+            <div class="testimonial-role">Parent · Youth Program</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="star-row">★★★★★</div>
+        <p class="testimonial-text">I came for self-defense. I stayed for the community and the growth. OMMA's corporate program transformed how our team handles adversity. The military-grade methodology is no joke.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SR</div>
+          <div>
+            <div class="testimonial-name">Salim R.</div>
+            <div class="testimonial-role">Corporate Member · Team Lead</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA STRIP ── -->
+<div class="cta-strip">
+  <div class="cta-strip-title">Your First Class is Free.</div>
+  <p>Begin your journey. No commitment. No pressure. Just the mat.</p>
+  <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B%0A%0ABooking+a+FREE+Trial+Class.+No+experience+needed+right%3F+Please+send+available+times+and+what+to+bring.+Thank+you!" target="_blank" class="btn-dark">
+    📲 Book via WhatsApp
+  </a>
+</div>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="reveal">
+        <div class="section-label">Find Us</div>
+        <h2 class="section-title">Get in <span class="gold-text">Touch</span></h2>
+        <span class="gold-line"></span>
+        <div class="contact-info-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Muscat, Oman<br><span style="color:var(--text-muted);font-size:0.8rem;">Exact address shared on booking</span></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📲</div>
+          <div>
+            <div class="contact-label">WhatsApp</div>
+            <div class="contact-value"><a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+I+would+like+to+get+more+information+about+your+programs." target="_blank" style="color:var(--gold);text-decoration:none">+968 9365 0675</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">📸</div>
+          <div>
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value"><a href="https://instagram.com/omma.oman" target="_blank" style="color:var(--gold);text-decoration:none">@omma.oman</a></div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <div class="contact-label">Class Times</div>
+            <div class="contact-value">Sat–Thu: Morning & Evening sessions<br><span style="color:var(--text-muted);font-size:0.8rem;">Full schedule shared on WhatsApp</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-label">Send a Message</div>
+        <h3 style="font-family:'Oswald',sans-serif;font-size:1.4rem;text-transform:uppercase;margin-bottom:1.5rem;">Quick Enquiry</h3>
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="fname" placeholder="Mohammed" required />
+            </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" id="fphone" placeholder="+968 ..." />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Interested In</label>
+            <select id="finterest">
+              <option value="trial">Free Trial Class</option>
+              <option value="bjj">BJJ Program</option>
+              <option value="mma">MMA Program</option>
+              <option value="youth">Youth Program</option>
+              <option value="self-defense">Self-Defense</option>
+              <option value="corporate">School / Corporate</option>
+              <option value="competition">Competition Coaching</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message (optional)</label>
+            <textarea id="fmessage" placeholder="Tell us a bit about yourself or what you're looking for..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="border:none;cursor:pointer;width:100%;justify-content:center;">
+            Send via WhatsApp →
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-brand">OMMA</div>
+  <div class="footer-copy">
+    © 2024 Oman Mixed Martial Art · All Rights Reserved<br>
+    <span style="color:rgba(138,158,163,0.6)">Own Your Body. Own Your Mind. Own Your Life.</span>
+  </div>
+  <div class="footer-social">
+    <a href="https://instagram.com/omma.oman" target="_blank" title="Instagram">IG</a>
+    <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+I+would+like+to+get+more+information+about+your+programs." target="_blank" title="WhatsApp">WA</a>
+  </div>
+</footer>
+
+<script>
+  // ── NAV SCROLL
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ── HAMBURGER
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // ── SCROLL REVEAL
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // ── PACKAGE TABS
+  function showPkg(type) {
+    document.querySelectorAll('.pkg-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pkg-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('pkg-' + type).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // ── SMART WHATSAPP OPENER
+  // On mobile: wa.me opens the app directly
+  // On desktop: try whatsapp:// protocol first (opens desktop app), fallback to web.whatsapp.com
+  function openWhatsApp(text) {
+    const number = '96893650675';
+    const encoded = encodeURIComponent(text);
+    const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+
+    if (isMobile) {
+      window.location.href = `https://wa.me/${number}?text=${encoded}`;
+    } else {
+      // Try desktop app first via whatsapp:// protocol
+      const desktopUrl = `whatsapp://send?phone=${number}&text=${encoded}`;
+      const webUrl = `https://web.whatsapp.com/send?phone=${number}&text=${encoded}`;
+
+      // Attempt to open desktop app; if it fails after 1.5s, open WhatsApp Web
+      const start = Date.now();
+      const iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      const fallbackTimer = setTimeout(function() {
+        document.body.removeChild(iframe);
+        // Only fallback if the page is still visible (app didn't open)
+        if (Date.now() - start < 2000) {
+          window.open(webUrl, '_blank');
+        }
+      }, 1500);
+
+      iframe.src = desktopUrl;
+
+      // If user returns to tab quickly, app opened — cancel fallback
+      window.addEventListener('blur', function onBlur() {
+        clearTimeout(fallbackTimer);
+        try { document.body.removeChild(iframe); } catch(e) {}
+        window.removeEventListener('blur', onBlur);
+      }, { once: true });
+    }
+  }
+
+  // ── INTERCEPT ALL WA LINKS and route through smart opener
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[href*="wa.me"]');
+    if (!link) return;
+    e.preventDefault();
+    const url = new URL(link.href);
+    const text = url.searchParams.get('text') || '';
+    openWhatsApp(text);
+  });
+
+  // ── CONTACT FORM → WhatsApp
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('fname').value;
+    const phone = document.getElementById('fphone').value;
+    const interest = document.getElementById('finterest').value;
+    const message = document.getElementById('fmessage').value;
+    const pkg = {
+      'trial': 'FREE Trial Class',
+      'bjj': 'BJJ Program',
+      'mma': 'MMA Program',
+      'youth': 'Youth Program',
+      'self-defense': 'Self-Defense Program',
+      'corporate': 'School / Corporate Program',
+      'competition': 'Competition Coaching'
+    }[interest] || interest;
+    const text = [
+      'Hi OMMA! 🥋',
+      '',
+      '*ENQUIRY: ' + pkg + '*',
+      '',
+      'Name: ' + name,
+      phone ? 'Phone: ' + phone : '',
+      message ? 'Message: ' + message : ''
+    ].filter(Boolean).join('\n');
+    openWhatsApp(text);
+  });
+</script>
+</body>
+</html>
