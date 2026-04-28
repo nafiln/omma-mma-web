@@ -60,7 +60,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 5%;
-      height: 72px;
+      height: 76px;
       background: rgba(14, 22, 25, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(203, 151, 68, 0.15);
@@ -68,7 +68,7 @@
     }
 
     nav.scrolled {
-      height: 60px;
+      height: 64px;
       background: rgba(14, 22, 25, 0.98);
     }
 
@@ -79,21 +79,24 @@
       height: 100%;
     }
 
+    /* ── LOGO: resized for OMMA-logo-DBG.webp ── */
     .nav-logo img {
-      height: 48px;
+      height: 54px;
       width: auto;
+      max-width: 180px;
       object-fit: contain;
       transition: height 0.3s;
+      display: block;
     }
 
     nav.scrolled .nav-logo img {
-      height: 38px;
+      height: 42px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.8rem;
       list-style: none;
     }
 
@@ -140,7 +143,7 @@
     .mobile-menu {
       display: none;
       position: fixed;
-      top: 72px; left: 0; right: 0;
+      top: 76px; left: 0; right: 0;
       background: var(--black);
       border-bottom: 2px solid var(--gold);
       padding: 2rem 5%;
@@ -210,12 +213,41 @@
       transform: rotate(45deg);
     }
 
-    .hero-content {
+    /* ── HERO LAYOUT (text left + image right) ── */
+    .hero-wrapper {
       position: relative;
       z-index: 2;
-      padding: 0 5%;
-      padding-top: 72px;
-      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      width: 100%;
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 76px 5% 0;
+    }
+
+    .hero-content {
+      flex: 1 1 55%;
+      max-width: 660px;
+    }
+
+    .hero-image {
+      flex: 1 1 45%;
+      max-width: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.55s forwards;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      max-height: 78vh;
+      object-fit: contain;
+      filter: drop-shadow(0 30px 60px rgba(0,0,0,0.55));
     }
 
     .hero-eyebrow {
@@ -242,9 +274,9 @@
 
     .hero h1 {
       font-family: 'Oswald', sans-serif;
-      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      font-size: clamp(3rem, 7.5vw, 6rem);
       font-weight: 700;
-      line-height: 0.92;
+      line-height: 0.94;
       text-transform: uppercase;
       letter-spacing: -0.01em;
       margin-bottom: 1.5rem;
@@ -454,8 +486,11 @@
     .program-card:hover { background: var(--charcoal-light); }
     .program-card:hover::before { transform: scaleX(1); }
 
+    /* ── PROGRAM ICONS: now image-based ── */
     .program-icon {
-      font-size: 2.2rem;
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
       margin-bottom: 1.2rem;
       display: block;
     }
@@ -860,86 +895,54 @@
     .coach-bio p + p { margin-top: 1rem; }
     .coach-bio strong { color: var(--white); font-weight: 600; }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials-section {
+    /* ── SCHEDULE / TIMETABLE (replaces testimonials) ── */
+    .schedule-section {
       padding: 7rem 0;
       background: var(--black);
     }
 
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .testimonial-card {
-      background: var(--charcoal-mid);
-      border: 1px solid rgba(203,151,68,0.1);
-      border-radius: 2px;
-      padding: 2rem;
-      position: relative;
-    }
-
-    .testimonial-card::before {
-      content: '"';
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 5rem;
-      color: rgba(203,151,68,0.12);
-      position: absolute;
-      top: 0.5rem;
-      left: 1.5rem;
-      line-height: 1;
-    }
-
-    .testimonial-text {
-      font-size: 0.85rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-      margin-bottom: 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .testimonial-author {
+    .schedule-image-wrap {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .testimonial-avatar {
-      width: 38px;
-      height: 38px;
-      background: var(--gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      font-family: 'Oswald', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--black);
+      align-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      background: var(--charcoal-mid);
+      border: 1px solid rgba(203,151,68,0.18);
+      border-radius: 4px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .testimonial-name {
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--white);
+    .schedule-image-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
     }
 
-    .testimonial-role {
-      font-size: 0.7rem;
+    .schedule-image-wrap img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 2px;
+    }
+
+    .schedule-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
-      letter-spacing: 0.05em;
     }
 
-    .star-row {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 1rem;
+    .schedule-note strong {
+      color: var(--white);
+      font-weight: 600;
     }
-
-    .star { color: var(--gold); font-size: 0.7rem; }
 
     /* ── CTA STRIP ── */
     .cta-strip {
@@ -1108,9 +1111,11 @@
     }
 
     .footer-brand img {
-      height: 36px;
+      height: 40px;
       width: auto;
+      max-width: 140px;
       object-fit: contain;
+      display: block;
     }
 
     .footer-copy {
@@ -1168,6 +1173,14 @@
     }
 
     /* ── RESPONSIVE ── */
+
+    /* Hide hero banner image below tablet-landscape */
+    @media (max-width: 1024px) {
+      .hero-image { display: none; }
+      .hero-content { flex: 1 1 100%; max-width: 900px; }
+      .hero-wrapper { padding-top: 96px; }
+    }
+
     @media (max-width: 960px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
@@ -1176,7 +1189,6 @@
       .package-card.featured { transform: none; }
       .package-card.featured:hover { transform: translateY(-6px); }
       .coach-inner { grid-template-columns: 1fr; }
-      .testimonials-grid { grid-template-columns: 1fr; }
       .contact-inner { grid-template-columns: 1fr; }
       .philosophy-grid { grid-template-columns: 1fr; }
     }
@@ -1187,7 +1199,9 @@
       .hero-stats { gap: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
       .coach-credentials { grid-template-columns: 1fr; }
-      .nav-logo img { height: 36px; }
+      .nav-logo img { height: 42px; }
+      .schedule-image-wrap { padding: 0.75rem; }
+      .schedule-section { padding: 5rem 0; }
     }
   </style>
 
@@ -1208,11 +1222,12 @@
 <!-- ── NAV ── -->
 <nav id="nav" aria-label="Main navigation">
   <a href="#" class="nav-logo">
-    <img src="omma_gym_logo.jpeg" alt="OMMA – Oman Mixed Martial Art" />
+    <img src="OMMA-logo-DBG.webp" alt="OMMA – Oman Mixed Martial Art" />
   </a>
   <ul class="nav-links">
     <li><a href="#programs">Programs</a></li>
     <li><a href="#packages">Membership</a></li>
+    <li><a href="#schedule">Schedule</a></li>
     <li><a href="#coach">Coach Doty</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -1226,6 +1241,7 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="#programs" onclick="closeMobile()">Programs</a>
   <a href="#packages" onclick="closeMobile()">Membership</a>
+  <a href="#schedule" onclick="closeMobile()">Schedule</a>
   <a href="#coach" onclick="closeMobile()">Coach Doty</a>
   <a href="#about" onclick="closeMobile()">About</a>
   <a href="#contact" onclick="closeMobile()">Contact</a>
@@ -1236,42 +1252,48 @@
 <section class="hero" id="home" aria-label="Hero">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Muscat, Oman · Est. 2024</div>
-    <h1>
-      Own Your<br>
-      <span class="gold">Ground.</span><br>
-      <span class="outline">Own Your Life.</span>
-    </h1>
-    <p class="hero-sub">
-      Oman's premier BJJ & MMA academy. Led by <strong>World & European Champion</strong> Coach Mohammed Doty — where every session forges not just athletes, but leaders.
-    </p>
-    <div class="hero-ctas">
-      <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+Claiming+FREE+Trial+Class.+Please+send+session+details+and+what+to+bring.+Thank+you!" target="_blank" class="btn-primary">
-        ✦ Claim Your Free Trial
-      </a>
-      <a href="#programs" class="btn-outline">Explore Programs</a>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Muscat, Oman · Est. 2026</div>
+      <h1>
+        Own Your<br>
+        <span class="gold">Ground.</span><br>
+        <span class="outline">Own Your Life.</span>
+      </h1>
+      <p class="hero-sub">
+        Oman's premier BJJ & MMA academy. Led by <strong>World Pro & European Champion</strong> Coach Mohammed Doty — where every session forges not just athletes, but leaders.
+      </p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/96893650675?text=Hi+OMMA+%F0%9F%A5%8B+Claiming+FREE+Trial+Class.+Please+send+session+details+and+what+to+bring.+Thank+you!" target="_blank" class="btn-primary">
+          ✦ Claim Your Free Trial
+        </a>
+        <a href="#programs" class="btn-outline">Explore Programs</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">2×</div>
+          <div class="hero-stat-label">World Pro Champion</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">5+</div>
+          <div class="hero-stat-label">Military Units Trained</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">BJJ</div>
+          <div class="hero-stat-label">3rd Degree Black Belt</div>
+        </div>
+        <div class="hero-stat-sep"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">All</div>
+          <div class="hero-stat-label">Ages & Levels</div>
+        </div>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-num">2×</div>
-        <div class="hero-stat-label">World Champion</div>
-      </div>
-      <div class="hero-stat-sep"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">5+</div>
-        <div class="hero-stat-label">Military Units Trained</div>
-      </div>
-      <div class="hero-stat-sep"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">BJJ</div>
-        <div class="hero-stat-label">2nd Degree Black Belt</div>
-      </div>
-      <div class="hero-stat-sep"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">All</div>
-        <div class="hero-stat-label">Ages & Levels</div>
-      </div>
+    <!-- Hero banner image (hidden below tablet-landscape) -->
+    <div class="hero-image" aria-hidden="true">
+      <img src="omma-banner-image.webp" alt="OMMA – Train Hard. Train Smart." />
     </div>
   </div>
 </section>
@@ -1289,37 +1311,37 @@
     </div>
     <div class="programs-grid">
       <div class="program-card reveal">
-        <span class="program-icon">🥋</span>
+        <img src="bjj-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Brazilian Jiu-Jitsu</div>
         <p class="program-desc">Gi & No-Gi classes across all levels. The foundation of OMMA — technical depth, competitive drilling, and mat intelligence. From your first roll to your competition debut.</p>
         <span class="program-tag">All Levels · Gi & No-Gi</span>
       </div>
       <div class="program-card reveal">
-        <span class="program-icon">🥊</span>
+        <img src="mma-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Mixed Martial Arts</div>
         <p class="program-desc">Striking, grappling, and conditioning unified. Build a complete combat game under coaches who've trained fighters to championship gold across the Gulf region.</p>
         <span class="program-tag">Adults · Intermediate+</span>
       </div>
       <div class="program-card reveal">
-        <span class="program-icon">🛡️</span>
+        <img src="self-d-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Self-Defense</div>
         <p class="program-desc">Practical, intelligent, non-aggressive threat control. Rooted in real-world scenarios developed through special forces methodology. Control without conflict.</p>
         <span class="program-tag">All Ages · Beginners Welcome</span>
       </div>
       <div class="program-card reveal">
-        <span class="program-icon">🌟</span>
+        <img src="kids-youth-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Youth Program</div>
         <p class="program-desc">We don't just teach kids to roll. We teach them to stand up — on the mat and in life. Focus, respect, resilience, and confidence through the discipline of BJJ.</p>
         <span class="program-tag">Ages 5–16 · Character First</span>
       </div>
       <div class="program-card reveal">
-        <span class="program-icon">🏆</span>
+        <img src="comps-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Competition Coaching</div>
         <p class="program-desc">Elite preparation for regional and international tournaments. Sport-specific conditioning, game-planning, and mental performance coaching from a champion's blueprint.</p>
         <span class="program-tag">Advanced · Competitive Athletes</span>
       </div>
       <div class="program-card reveal">
-        <span class="program-icon">🏢</span>
+        <img src="corporate-icon.webp" alt="" class="program-icon" />
         <div class="program-name">School & Corporate</div>
         <p class="program-desc">Values-Based Development programs for organizations committed to leadership, discipline, and team cohesion. Our primary classroom is the mind and the heart.</p>
         <span class="program-tag">Groups · Custom Programs</span>
@@ -1640,7 +1662,7 @@
         <div class="coach-credentials">
           <div class="credential-chip">
             <div class="credential-chip-label">Belt Rank</div>
-            <div class="credential-chip-val">2nd Degree Black Belt, BJJ</div>
+            <div class="credential-chip-val">3rd Degree Black Belt, BJJ</div>
           </div>
           <div class="credential-chip">
             <div class="credential-chip-label">Titles</div>
@@ -1662,7 +1684,7 @@
         <span class="gold-line"></span>
         <div class="coach-bio">
           <p>Some coaches teach technique. <strong>Coach Mohammed Doty teaches transformation.</strong></p>
-          <p>A 2nd Degree Black Belt under the legendary Master Fabricio Moreira, Coach Doty has competed and won at the highest levels of sport — including the prestigious <strong>IBJJF European Championship</strong> and the <strong>World Pro Championship</strong>.</p>
+          <p>A 3rd Degree Black Belt under the legendary Master Fabricio Moreira, Coach Doty has competed and won at the highest levels of sport — including the prestigious <strong>IBJJF European Championship</strong> and the <strong>World Pro Championship</strong>.</p>
           <p>His military background adds a dimension few coaches can match. As Head Instructor to over <strong>five elite military units including special forces</strong>, Coach Doty built training methodologies for real-world scenarios — where composure, precision, and controlled aggression are essential. That same philosophy underpins every OMMA program.</p>
           <p>As founder of <strong>Qatar MMA</strong> — the nation's largest BJJ & MMA institution — he left a lasting mark on combat sports culture across the Gulf. Now he's building the same legacy here in Oman.</p>
         </div>
@@ -1674,49 +1696,21 @@
 
 <div class="gold-divider"></div>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials-section" id="testimonials">
+<!-- ── SCHEDULE / TIMETABLE (replaces testimonials section) ── -->
+<section class="schedule-section" id="schedule">
   <div class="section-inner">
-    <div class="reveal" style="text-align:center;margin-bottom:1rem">
-      <div class="section-label" style="justify-content:center">What Members Say</div>
-      <h2 class="section-title">The <span class="gold-text">OMMA Effect</span></h2>
-      <span class="gold-line" style="margin:1.2rem auto 0"></span>
+    <div class="reveal" style="text-align:center;margin-bottom:3rem">
+      <div class="section-label" style="justify-content:center">Class Schedule</div>
+      <h2 class="section-title">Weekly <span class="gold-text">Timetable</span></h2>
+      <span class="gold-line" style="margin:1.2rem auto 1.5rem"></span>
+      <p style="color:var(--text-muted);font-size:0.9rem;max-width:520px;margin:0 auto;">Find your slot. Train with consistency. Build the discipline that defines OMMA.</p>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="star-row">★★★★★</div>
-        <p class="testimonial-text">The most complete BJJ experience I've had in Oman. Coach Doty doesn't just correct your technique — he reframes how you think about pressure, timing, and control. Off the mat too.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">AK</div>
-          <div>
-            <div class="testimonial-name">Ahmed K.</div>
-            <div class="testimonial-role">Adult Member · BJJ Intermediate</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="star-row">★★★★★</div>
-        <p class="testimonial-text">My son joined OMMA's youth program six months ago. His focus at school, his discipline at home — everything improved. The values curriculum is real. This isn't just a gym.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">FM</div>
-          <div>
-            <div class="testimonial-name">Fatima M.</div>
-            <div class="testimonial-role">Parent · Youth Program</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal">
-        <div class="star-row">★★★★★</div>
-        <p class="testimonial-text">I came for self-defense. I stayed for the community and the growth. OMMA's corporate program transformed how our team handles adversity. The military-grade methodology is no joke.</p>
-        <div class="testimonial-author">
-          <div class="testimonial-avatar">SR</div>
-          <div>
-            <div class="testimonial-name">Salim R.</div>
-            <div class="testimonial-role">Corporate Member · Team Lead</div>
-          </div>
-        </div>
-      </div>
+    <div class="schedule-image-wrap reveal">
+      <img src="omma-sl-schedule.webp" alt="OMMA Weekly Class Schedule – BJJ, MMA, Self-Defense & Youth Sessions" />
     </div>
+    <p class="schedule-note reveal">
+      Schedule may vary on public holidays. <strong>Always confirm session times via WhatsApp before attending.</strong>
+    </p>
   </div>
 </section>
 
@@ -1808,10 +1802,10 @@
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-brand">
-    <img src="omma_gym_logo.jpeg" alt="OMMA – Oman Mixed Martial Art" />
+    <img src="OMMA-logo-DBG.webp" alt="OMMA – Oman Mixed Martial Art" />
   </div>
   <div class="footer-copy">
-    © 2024 Oman Mixed Martial Art · All Rights Reserved<br>
+    © 2026 Oman Mixed Martial Art · All Rights Reserved<br>
     <span style="color:rgba(138,158,163,0.6)">Own Your Body. Own Your Mind. Own Your Life.</span>
   </div>
   <div class="footer-social">
