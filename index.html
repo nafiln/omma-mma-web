@@ -580,6 +580,13 @@
       gap: 1.5rem;
     }
 
+    /* Two-column grid variant — for adult & youth tabs (2 cards each) */
+    .packages-grid.two-col {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
     .package-card {
       background: var(--charcoal-mid);
       border: 1px solid rgba(203,151,68,0.12);
@@ -740,6 +747,35 @@
 
     .pkg-panel { display: none; }
     .pkg-panel.active { display: block; }
+
+    /* Private training note — sits beneath the indicative-pricing line */
+    .private-training-note {
+      text-align: center;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .private-training-note strong {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .private-training-note a {
+      color: var(--gold);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(203,151,68,0.4);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .private-training-note a:hover {
+      color: var(--gold-light);
+      border-color: var(--gold-light);
+    }
 
     /* ── PHILOSOPHY ── */
     .philosophy-section {
@@ -1185,7 +1221,8 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .programs-grid { grid-template-columns: 1fr 1fr; }
-      .packages-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+      .packages-grid,
+      .packages-grid.two-col { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
       .package-card.featured { transform: none; }
       .package-card.featured:hover { transform: translateY(-6px); }
       .coach-inner { grid-template-columns: 1fr; }
@@ -1332,7 +1369,7 @@
         <img src="kids-youth-icon.webp" alt="" class="program-icon" />
         <div class="program-name">Youth Program</div>
         <p class="program-desc">We don't just teach kids to roll. We teach them to stand up — on the mat and in life. Focus, respect, resilience, and confidence through the discipline of BJJ.</p>
-        <span class="program-tag">Ages 5–16 · Character First</span>
+        <span class="program-tag">Ages 6–15 · Character First</span>
       </div>
       <div class="program-card reveal">
         <img src="comps-icon.webp" alt="" class="program-icon" />
@@ -1368,13 +1405,13 @@
       <button class="pkg-tab" onclick="showPkg('corporate')">Corporate</button>
     </div>
 
-    <!-- ADULT PACKAGES -->
+    <!-- ADULT PACKAGES (2 cards — Warrior & Champion) -->
     <div class="pkg-panel active" id="pkg-adult">
-      <div class="packages-grid">
+      <div class="packages-grid two-col">
         <div class="package-card reveal">
           <div class="package-header">
             <div class="package-tier">Starter</div>
-            <div class="package-name">Foundation</div>
+            <div class="package-name">Warrior</div>
             <div class="package-price">
               <span class="price-currency">OMR</span>
               <span class="price-amount">35</span>
@@ -1384,14 +1421,15 @@
           <div class="package-body">
             <ul class="package-features">
               <li>2 classes per week (any discipline)</li>
-              <li>Access to beginner & fundamentals sessions</li>
-              <li>Locker room access</li>
+              <li>Beginner & fundamentals sessions</li>
+              <li>Performance & mental coaching</li>
               <li>OMMA community membership</li>
+              <li class="disabled">Unlimited classes</li>
               <li class="disabled">Open mat access</li>
-              <li class="disabled">Competition training track</li>
-              <li class="disabled">Priority booking</li>
+              <li class="disabled">Competition training</li>
+              <li class="disabled">1-on-1 game-planning sessions</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*FOUNDATION+MEMBERSHIP*+%E2%80%93+Adult+Starter+%7C+OMR+35%2Fmonth%0A%0AIncludes%3A+2+classes+per+week%2C+beginner+%26+fundamentals+sessions%2C+locker+access%2C+OMMA+community+membership.%0A%0APlease+confirm+availability+and+next+steps.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*WARRIOR+MEMBERSHIP*+%E2%80%93+Adult+Starter+%7C+OMR+35%2Fmonth%0A%0AIncludes%3A+2+classes+per+week%2C+beginner+%26+fundamentals+sessions%2C+performance+%26+mental+coaching%2C+OMMA+community+membership.%0A%0APlease+confirm+availability+and+next+steps.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
           </div>
         </div>
 
@@ -1409,122 +1447,74 @@
           <div class="package-body">
             <ul class="package-features">
               <li>Unlimited classes — all disciplines</li>
-              <li>Open mat access (Fri & Sat)</li>
-              <li>BJJ & MMA combined access</li>
-              <li>Locker room + gear storage</li>
-              <li>OMMA community membership</li>
-              <li>Priority class booking</li>
-              <li class="disabled">Competition coaching track</li>
-            </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*CHAMPION+MEMBERSHIP*+%E2%80%93+Adult+%7C+OMR+60%2Fmonth%0A%0AIncludes%3A+Unlimited+classes+all+disciplines%2C+open+mat+access%2C+BJJ+%26+MMA%2C+priority+booking.%0A%0APlease+let+me+know+how+to+get+started!+Thank+you!" target="_blank" class="package-cta solid">Claim This Plan</a>
-          </div>
-        </div>
-
-        <div class="package-card reveal">
-          <div class="package-header">
-            <div class="package-tier">Elite</div>
-            <div class="package-name">Competitor</div>
-            <div class="package-price">
-              <span class="price-currency">OMR</span>
-              <span class="price-amount">90</span>
-              <span class="price-period">/ month</span>
-            </div>
-          </div>
-          <div class="package-body">
-            <ul class="package-features">
-              <li>Everything in Champion</li>
-              <li>Competition training track included</li>
-              <li>1-on-1 game-planning sessions (monthly)</li>
-              <li>Tournament entry support & logistics</li>
+              <li>Open mat access</li>
+              <li>Competition training</li>
+              <li>1-on-1 game-planning sessions</li>
               <li>Performance & mental coaching</li>
-              <li>Early access to seminars & workshops</li>
-              <li>OMMA branded gi (first month)</li>
+              <li>Priority access to seminars & workshops</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*COMPETITOR+MEMBERSHIP*+%E2%80%93+Adult+Elite+%7C+OMR+90%2Fmonth%0A%0AIncludes%3A+Unlimited+classes%2C+competition+training+track%2C+1-on-1+game-planning%2C+tournament+support%2C+mental+coaching+%26+OMMA+gi.%0A%0ALooking+to+compete+%E2%80%93+please+share+more+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*CHAMPION+MEMBERSHIP*+%E2%80%93+Adult+%7C+OMR+60%2Fmonth%0A%0AIncludes%3A+Unlimited+classes+all+disciplines%2C+open+mat+access%2C+competition+training%2C+1-on-1+game-planning%2C+performance+%26+mental+coaching%2C+priority+access+to+seminars+%26+workshops.%0A%0APlease+let+me+know+how+to+get+started!+Thank+you!" target="_blank" class="package-cta solid">Claim This Plan</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- YOUTH PACKAGES -->
+    <!-- YOUTH PACKAGES (2 cards — Little Warriors & Young Champs) -->
     <div class="pkg-panel" id="pkg-youth">
-      <div class="packages-grid">
+      <div class="packages-grid two-col">
         <div class="package-card reveal">
           <div class="package-header">
             <div class="package-tier">Youth · Starter</div>
             <div class="package-name">Little Warriors</div>
             <div class="package-price">
               <span class="price-currency">OMR</span>
-              <span class="price-amount">25</span>
+              <span class="price-amount">30</span>
               <span class="price-period">/ month</span>
             </div>
           </div>
           <div class="package-body">
             <ul class="package-features">
-              <li>2 classes per week (BJJ fundamentals)</li>
-              <li>Character & values-based curriculum</li>
-              <li>Ages 5–10</li>
+              <li>2 classes per week — BJJ + MMA</li>
+              <li>Values-based curriculum</li>
+              <li>Ages 6–15</li>
               <li>Safe, structured environment</li>
-              <li class="disabled">Open mat</li>
-              <li class="disabled">Competition track</li>
-              <li class="disabled">Belt progression fast-track</li>
+              <li>Belt progression assessment</li>
+              <li class="disabled">Unlimited classes</li>
+              <li class="disabled">Open mat access</li>
+              <li class="disabled">Competition coaching</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*LITTLE+WARRIORS+YOUTH+PROGRAM*+%E2%80%93+Ages+5-10+%7C+OMR+25%2Fmonth%0A%0AIncludes%3A+2+classes+per+week%2C+BJJ+fundamentals%2C+character+%26+values+curriculum+in+a+safe+structured+environment.%0A%0APlease+share+the+class+schedule+and+enrollment+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*LITTLE+WARRIORS+YOUTH+PROGRAM*+%E2%80%93+Ages+6-15+%7C+OMR+30%2Fmonth%0A%0AIncludes%3A+2+classes+per+week+%28BJJ+%2B+MMA%29%2C+values-based+curriculum%2C+belt+progression+assessment+in+a+safe+structured+environment.%0A%0APlease+share+the+class+schedule+and+enrollment+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
           </div>
         </div>
 
         <div class="package-card featured reveal">
           <div class="package-badge">Most Popular</div>
           <div class="package-header">
-            <div class="package-tier">Youth · Core</div>
-            <div class="package-name">Junior Athlete</div>
+            <div class="package-tier">Youth · Elite</div>
+            <div class="package-name">Young Champs</div>
             <div class="package-price">
               <span class="price-currency">OMR</span>
-              <span class="price-amount">40</span>
+              <span class="price-amount">50</span>
               <span class="price-period">/ month</span>
             </div>
           </div>
           <div class="package-body">
             <ul class="package-features">
               <li>Unlimited youth classes</li>
-              <li>Ages 8–16 · Gi & No-Gi</li>
-              <li>Values curriculum + physical conditioning</li>
-              <li>Belt progression assessment</li>
-              <li>Open mat (weekend)</li>
+              <li>Values-based curriculum</li>
+              <li>Ages 6–15 · Gi & No-Gi</li>
+              <li>Belt progression</li>
+              <li>Open mat access</li>
               <li>Progress reports for parents</li>
-              <li class="disabled">Competition coaching</li>
+              <li>Competition coaching</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*JUNIOR+ATHLETE+YOUTH+PROGRAM*+%E2%80%93+Ages+8-16+%7C+OMR+40%2Fmonth%0A%0AIncludes%3A+Unlimited+youth+classes%2C+Gi+%26+No-Gi%2C+belt+progression%2C+open+mat+%26+parent+progress+reports.%0A%0APlease+send+enrollment+steps.+Thank+you!" target="_blank" class="package-cta solid">Enrol Now</a>
-          </div>
-        </div>
-
-        <div class="package-card reveal">
-          <div class="package-header">
-            <div class="package-tier">Youth · Elite</div>
-            <div class="package-name">Young Champion</div>
-            <div class="package-price">
-              <span class="price-currency">OMR</span>
-              <span class="price-amount">65</span>
-              <span class="price-period">/ month</span>
-            </div>
-          </div>
-          <div class="package-body">
-            <ul class="package-features">
-              <li>Everything in Junior Athlete</li>
-              <li>Competition coaching track</li>
-              <li>Tournament preparation & entry support</li>
-              <li>1-on-1 development review (monthly)</li>
-              <li>Priority belt grading</li>
-              <li>Leadership & mentorship sessions</li>
-              <li>OMMA youth kit included</li>
-            </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*YOUNG+CHAMPION+YOUTH+PROGRAM*+%E2%80%93+Elite+%7C+OMR+65%2Fmonth%0A%0AIncludes%3A+Competition+coaching%2C+tournament+prep%2C+monthly+development+review%2C+priority+belt+grading%2C+leadership+sessions+%26+OMMA+youth+kit.%0A%0AMy+child+is+interested+in+competing+%E2%80%93+please+share+details.+Thank+you!" target="_blank" class="package-cta outline">Enquire Now</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*YOUNG+CHAMPS+YOUTH+PROGRAM*+%E2%80%93+Ages+6-15+%7C+OMR+50%2Fmonth%0A%0AIncludes%3A+Unlimited+youth+classes%2C+Gi+%26+No-Gi%2C+values+curriculum%2C+belt+progression%2C+open+mat%2C+progress+reports+%26+competition+coaching.%0A%0APlease+send+enrollment+steps.+Thank+you!" target="_blank" class="package-cta solid">Enrol Now</a>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CORPORATE PACKAGES -->
+    <!-- CORPORATE PACKAGES (pricing removed; 'Recommended' badge removed) -->
     <div class="pkg-panel" id="pkg-corporate">
       <div class="packages-grid">
         <div class="package-card reveal">
@@ -1532,9 +1522,9 @@
             <div class="package-tier">Organisation · Entry</div>
             <div class="package-name">Team Builder</div>
             <div class="package-price">
-              <span class="price-currency">OMR</span>
-              <span class="price-amount">200</span>
-              <span class="price-period">/ month</span>
+              <span class="price-currency"></span>
+              <span class="price-amount" style="font-size:2.5rem">Custom</span>
+              <span class="price-period"></span>
             </div>
           </div>
           <div class="package-body">
@@ -1547,19 +1537,18 @@
               <li class="disabled">Custom curriculum</li>
               <li class="disabled">Leadership coaching module</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*TEAM+BUILDER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+8+participants+%7C+OMR+200%2Fmonth%0A%0AIncludes%3A+2+group+sessions+per+week%2C+self-defense+%26+values-based+curriculum+at+OMMA+facility.%0A%0APlease+send+a+proposal+for+our+organisation.+Thank+you!" target="_blank" class="package-cta outline">Request Proposal</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*TEAM+BUILDER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+8+participants%0A%0AIncludes%3A+2+group+sessions+per+week%2C+self-defense+%26+values-based+curriculum+at+OMMA+facility.%0A%0APlease+send+a+proposal+for+our+organisation.+Thank+you!" target="_blank" class="package-cta outline">Request Proposal</a>
           </div>
         </div>
 
-        <div class="package-card featured reveal">
-          <div class="package-badge">Recommended</div>
+        <div class="package-card reveal">
           <div class="package-header">
             <div class="package-tier">Organisation · Core</div>
             <div class="package-name">Performance Partner</div>
             <div class="package-price">
-              <span class="price-currency">OMR</span>
-              <span class="price-amount">450</span>
-              <span class="price-period">/ month</span>
+              <span class="price-currency"></span>
+              <span class="price-amount" style="font-size:2.5rem">Custom</span>
+              <span class="price-period"></span>
             </div>
           </div>
           <div class="package-body">
@@ -1572,7 +1561,7 @@
               <li>Custom session theming</li>
               <li class="disabled">Dedicated account manager</li>
             </ul>
-            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*PERFORMANCE+PARTNER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+20+participants+%7C+OMR+450%2Fmonth%0A%0AIncludes%3A+3+sessions+per+week%2C+self-defense+%26+leadership+curriculum%2C+optional+on-site+delivery%2C+quarterly+reporting+%26+custom+theming.%0A%0APlease+send+a+full+proposal.+Thank+you!" target="_blank" class="package-cta solid">Request Proposal</a>
+            <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0A*PERFORMANCE+PARTNER+CORPORATE+PACKAGE*+%E2%80%93+Up+to+20+participants%0A%0AIncludes%3A+3+sessions+per+week%2C+self-defense+%26+leadership+curriculum%2C+optional+on-site+delivery%2C+quarterly+reporting+%26+custom+theming.%0A%0APlease+send+a+full+proposal.+Thank+you!" target="_blank" class="package-cta solid">Request Proposal</a>
           </div>
         </div>
 
@@ -1604,6 +1593,9 @@
 
     <p class="reveal" style="text-align:center;margin-top:2rem;font-size:0.78rem;color:var(--text-muted);">
       All memberships include a <strong style="color:var(--white)">free trial class</strong> before commitment. Prices are indicative — contact us for the latest rates.
+    </p>
+    <p class="reveal private-training-note">
+      <strong>Private Training</strong> sessions available upon request. WhatsApp us on <a href="https://wa.me/96895657456?text=Hi+OMMA+%F0%9F%A5%8B%0A%0AI%27m+interested+in+booking+a+*Private+Training*+session.+Please+share+available+times+and+pricing.+Thank+you!" target="_blank">+968 95657456</a>
     </p>
   </div>
 </section>
@@ -1696,7 +1688,7 @@
 
 <div class="gold-divider"></div>
 
-<!-- ── SCHEDULE / TIMETABLE (replaces testimonials section) ── -->
+<!-- ── SCHEDULE / TIMETABLE ── -->
 <section class="schedule-section" id="schedule">
   <div class="section-inner">
     <div class="reveal" style="text-align:center;margin-bottom:3rem">
@@ -1706,7 +1698,7 @@
       <p style="color:var(--text-muted);font-size:0.9rem;max-width:520px;margin:0 auto;">Find your slot. Train with consistency. Build the discipline that defines OMMA.</p>
     </div>
     <div class="schedule-image-wrap reveal">
-      <img src="omma-sl-schedule.webp" alt="OMMA Weekly Class Schedule – BJJ, MMA, Self-Defense & Youth Sessions" />
+      <img src="omma-sl-schedule-2.webp" alt="OMMA Weekly Class Schedule – BJJ, MMA, Self-Defense & Youth Sessions" />
     </div>
     <p class="schedule-note reveal">
       Schedule may vary on public holidays. <strong>Always confirm session times via WhatsApp before attending.</strong>
@@ -1784,6 +1776,7 @@
               <option value="self-defense">Self-Defense</option>
               <option value="corporate">School / Corporate</option>
               <option value="competition">Competition Coaching</option>
+              <option value="private">Private Training</option>
             </select>
           </div>
           <div class="form-group">
@@ -1907,7 +1900,8 @@
       'youth': 'Youth Program',
       'self-defense': 'Self-Defense Program',
       'corporate': 'School / Corporate Program',
-      'competition': 'Competition Coaching'
+      'competition': 'Competition Coaching',
+      'private': 'Private Training'
     }[interest] || interest;
     const text = [
       'Hi OMMA! 🥋',
